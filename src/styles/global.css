@@ -1,1 +1,32 @@
 @import "tailwindcss";
+
+@theme {
+  --color-navy: #1F3864;
+  --color-navy-deep: #16284A;
+  --color-accent: #2E75B6;
+  --color-tint: #DEEAF6;
+  --color-gold: #C9B77A;
+  --color-ink: #262626;
+  --color-mute: #5F6B7A;
+  --color-paper: #F7F9FC;
+  --font-sans: "Inter", "Segoe UI", system-ui, sans-serif;
+  --font-display: "Inter Tight", "Inter", "Segoe UI", sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, Consolas, monospace;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+.monogram {
+  font-family: Georgia, "Times New Roman", serif;
+  font-style: italic;
+  font-weight: 700;
+}

@@ -1,17 +1,104 @@
 ---
-import '../styles/global.css';
+import Base from '../layouts/Base.astro';
+import { site } from '../data/site';
+import { projects } from '../data/projects';
+
+const checks = [
+  { label: 'Paramount · Alteryx reconciliation', result: '60/60' },
+  { label: 'Paramount · Excel databook checks', result: '37/37' },
+  { label: 'Paramount · memo numbers vs. databook', result: '18/18' },
+  { label: 'Hamilton · 1792 table foots to the penny', result: '5/5 cols' },
+];
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1 class="text-3xl font-bold text-blue-900">Astro</h1>
-	</body>
-</html>
+<Base>
+  <section class="relative overflow-hidden bg-navy-deep text-white">
+    <div class="mx-auto grid max-w-6xl items-center gap-14 px-5 pb-24 pt-20 sm:px-8 sm:pb-32 sm:pt-28 lg:grid-cols-5">
+      <div class="lg:col-span-3">
+      <p class="font-mono text-sm tracking-wide text-gold">Financial analysis · selected work</p>
+      <h1 class="mt-6 font-display text-6xl font-semibold leading-[0.95] tracking-tight sm:text-8xl">
+        Joseph<br />Ryan Barry
+      </h1>
+      <p class="mt-10 max-w-2xl font-display text-2xl font-medium leading-snug sm:text-3xl">{site.line}</p>
+      <p class="mt-4 max-w-2xl text-lg italic text-tint/80">{site.subline}</p>
+      <a
+        href="#work"
+        class="mt-12 inline-flex items-center gap-2 border border-gold px-6 py-3 font-mono text-sm text-gold transition hover:bg-gold hover:text-navy-deep"
+      >
+        View work <span aria-hidden="true">→</span>
+      </a>
+      </div>
+      <div class="lg:col-span-2">
+        <div class="rounded-lg border border-white/10 bg-navy/60 font-mono text-sm">
+          <div class="flex items-center justify-between border-b border-white/10 px-5 py-3 text-xs text-tint/70">
+            <span>checks.log · every number ties out</span>
+            <span class="text-gold">● all pass</span>
+          </div>
+          <ul class="flex flex-col gap-3 px-5 py-5">
+            {checks.map((c) => (
+              <li class="flex items-baseline justify-between gap-4">
+                <span class="text-tint/85">{c.label}</span>
+                <span class="shrink-0 text-gold">{c.result} ✓</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="work" class="mx-auto max-w-6xl scroll-mt-16 px-5 py-20 sm:px-8">
+    <p class="font-mono text-sm text-accent">Work</p>
+    <h2 class="mt-2 font-display text-3xl font-semibold text-navy sm:text-4xl">Selected work</h2>
+
+    <div class="mt-12 flex flex-col gap-10">
+      {projects.map((p, i) => (
+        <a
+          href={`/projects/${p.slug}/`}
+          class="group grid overflow-hidden rounded-lg border border-navy/10 bg-white transition hover:border-accent hover:shadow-lg md:grid-cols-5"
+        >
+          <div class="overflow-hidden bg-tint md:col-span-3">
+            <img
+              src={p.cover}
+              alt={`${p.title}: preview`}
+              class="h-full w-full object-cover object-top transition duration-300 group-hover:scale-[1.02]"
+              loading={i === 0 ? 'eager' : 'lazy'}
+            />
+          </div>
+          <div class="flex flex-col p-6 sm:p-8 md:col-span-2">
+            <p class="font-mono text-xs text-mute">0{i + 1} · {p.kicker}</p>
+            <h3 class="mt-3 font-display text-2xl font-semibold text-navy">{p.title}</h3>
+            <p class="mt-3 leading-relaxed text-ink/80">{p.card}</p>
+            <p class="mt-4 border-l-2 border-gold pl-3 text-sm font-medium text-navy">{p.verdict}</p>
+            <div class="mt-5 flex flex-wrap gap-2">
+              {p.tools.map((t) => (
+                <span class="rounded bg-tint px-2 py-1 font-mono text-xs text-navy">{t}</span>
+              ))}
+            </div>
+            <span class="mt-auto pt-6 font-mono text-sm text-accent group-hover:underline">Read the analysis →</span>
+          </div>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <section id="about" class="scroll-mt-16 border-y border-navy/10 bg-white">
+    <div class="mx-auto max-w-6xl px-5 py-20 sm:px-8">
+      <p class="font-mono text-sm text-accent">About</p>
+      <p class="mt-4 max-w-3xl font-display text-2xl font-medium leading-snug text-navy sm:text-3xl">{site.bio}</p>
+      {site.about.map((para) => (
+        <p class="mt-6 max-w-3xl text-lg leading-relaxed text-ink/85 [&_strong]:font-semibold [&_strong]:text-navy" set:html={para} />
+      ))}
+    </div>
+  </section>
+
+  <section id="contact" class="mx-auto max-w-6xl scroll-mt-16 px-5 py-20 sm:px-8">
+    <p class="font-mono text-sm text-accent">Contact</p>
+    <div class="mt-4 flex flex-col gap-3 font-display text-xl font-medium sm:text-2xl">
+      <a href={`mailto:${site.email}`} class="text-navy hover:text-accent">{site.email}</a>
+      {site.linkedin && (
+        <a href={site.linkedin} class="text-navy hover:text-accent" target="_blank" rel="noopener">LinkedIn →</a>
+      )}
+    </div>
+  </section>
+</Base>
