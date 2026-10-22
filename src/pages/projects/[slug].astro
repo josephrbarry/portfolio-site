@@ -84,6 +84,69 @@ const next = projects[(i + 1) % projects.length];
     </div>
   </section>
 
+  {p.discrepancies && (
+    <section class="border-t border-navy/10 bg-white">
+      <div class="mx-auto max-w-6xl px-5 py-16 sm:px-8">
+        <p class="font-mono text-sm text-accent">Discrepancies</p>
+        <h2 class="mt-3 font-display text-3xl font-semibold text-navy sm:text-4xl">{p.discrepancies.title}</h2>
+        <p class="mt-5 max-w-3xl text-lg leading-relaxed text-ink/85">{p.discrepancies.intro}</p>
+
+        <figure class="mt-10">
+          <div class="overflow-x-auto rounded-lg border border-navy/10">
+            <table class="w-full min-w-[34rem] text-left text-sm">
+              <thead class="bg-navy-deep text-tint">
+                <tr>
+                  {p.discrepancies.table.head.map((h, n) => (
+                    <th class={`px-3 py-3 font-mono text-xs font-medium ${n >= 2 ? 'text-right' : ''}`}>{h}</th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {p.discrepancies.table.rows.map((r) => (
+                  <tr class="border-t border-navy/10">
+                    {r.map((c, n) => (
+                      <td class={`px-3 py-3 ${n >= 2 ? 'text-right font-mono tabular-nums' : ''} ${n === 2 ? 'text-red-700 line-through decoration-red-700/40' : ''} ${n === 4 ? 'font-semibold text-navy' : ''}`}>{c}</td>
+                    ))}
+                  </tr>
+                ))}
+              </tbody>
+              <tfoot>
+                <tr class="border-t-2 border-navy bg-tint/40">
+                  {p.discrepancies.table.foot.map((c, n) => (
+                    <td class={`px-3 py-3 font-semibold text-navy ${n >= 2 ? 'text-right font-mono tabular-nums' : ''}`}>{c}</td>
+                  ))}
+                </tr>
+              </tfoot>
+            </table>
+          </div>
+          <figcaption class="mt-3 text-sm text-mute">{p.discrepancies.table.caption}</figcaption>
+        </figure>
+
+        <figure class="mt-12">
+          <ol class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {p.discrepancies.witnesses.items.map((w, n) => (
+              <li class="rounded-lg border border-navy/10 p-5">
+                <p class="font-mono text-xs text-gold">Witness {n + 1}</p>
+                <p class="mt-2 font-semibold leading-snug text-navy">{w.source}</p>
+                <p class="mt-2 text-sm leading-relaxed text-ink/85">{w.finding}</p>
+              </li>
+            ))}
+          </ol>
+          <figcaption class="mt-3 text-sm text-mute">{p.discrepancies.witnesses.caption}</figcaption>
+        </figure>
+
+        <div class="mt-12 grid gap-8 sm:grid-cols-2">
+          {p.discrepancies.items.map((d) => (
+            <div class="border-l-4 border-gold pl-4">
+              <p class="font-semibold text-navy">{d.head}</p>
+              <p class="mt-2 leading-relaxed text-ink/85">{d.body}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
   <section class="border-t border-navy/10 bg-white">
     <div class="mx-auto max-w-6xl px-5 py-16 sm:px-8">
       <p class="font-mono text-sm text-accent">The work</p>
@@ -100,6 +163,37 @@ const next = projects[(i + 1) % projects.length];
       {p.note && <p class="mt-12 text-sm italic text-mute">{p.note}</p>}
     </div>
   </section>
+
+  {p.sources && (
+    <section class="border-t border-navy/10">
+      <div class="mx-auto max-w-6xl px-5 py-16 sm:px-8">
+        <p class="font-mono text-sm text-accent">Sources</p>
+        <h2 class="mt-3 font-display text-3xl font-semibold text-navy">Every document I checked against</h2>
+        <div class="mt-10 flex flex-col gap-12">
+          {p.sources.map((g) => (
+            <div>
+              <h3 class="font-mono text-xs uppercase tracking-wider text-mute">{g.group}</h3>
+              <ol class="mt-4 flex flex-col gap-5">
+                {g.items.map((s) => (
+                  <li class="border-l-2 border-tint pl-4">
+                    <p class="leading-relaxed text-ink">{s.cite}</p>
+                    <p class="mt-1 text-sm leading-relaxed text-mute">{s.use}</p>
+                    {s.links && (
+                      <p class="mt-2 flex flex-wrap gap-x-4 gap-y-1">
+                        {s.links.map((l) => (
+                          <a href={l.href} target="_blank" rel="noopener" class="font-mono text-xs text-accent underline-offset-4 hover:underline">{l.label} ↗</a>
+                        ))}
+                      </p>
+                    )}
+                  </li>
+                ))}
+              </ol>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
 
   <section class="mx-auto max-w-6xl px-5 py-14 sm:px-8">
     <a href={`/projects/${next.slug}/`} class="group block">
