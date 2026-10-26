@@ -76,7 +76,7 @@ export const projects: Project[] = [
     built: [
       'Alteryx workflow extracts 436 line items from both companies’ SEC filings and reconciles them in 60 checks.',
       'Excel databook: 19 tabs, 1,166 formulas, 49 checks, all passing. Deal math, quality of earnings, net debt, purchase price allocation, leverage and the networks analysis, every number tagged to its filing.',
-      'Eight-page Power BI story, executive summary first.',
+      'Nine-page Power BI story, executive summary first, ending with a review of how close the estimates came.',
       'After the deal closed on 6-Oct-26, a second Alteryx workflow and a new databook tab trued the model up to the closing filings: 11 of 11 tie-outs pass, net debt came within 2% of the model, and all three red flags still stand.',
       'One-page advisor memo to Paramount’s board; a build script checks every number in it against the databook.',
     ],
@@ -88,6 +88,7 @@ export const projects: Project[] = [
       { src: '/projects/paramount/page5.png', caption: 'Can they afford it: sources and uses, leverage by case, covenant sensitivity' },
       { src: '/projects/paramount/page7.png', caption: 'Sell the networks? Keep vs. sell by date, break-even price' },
       { src: '/projects/paramount/page8.png', caption: 'After closing: pre-closing estimates vs the closing filings' },
+      { src: '/projects/paramount/page9.png', caption: 'Project overview: how it was built and how close the estimates came' },
       { src: '/projects/paramount/page3.png', caption: 'What Paramount is buying' },
       { src: '/projects/paramount/page4.png', caption: 'Where the money goes' },
       { src: '/projects/paramount/page6.png', caption: 'Findings and basis of preparation' },
