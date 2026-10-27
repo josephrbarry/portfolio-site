@@ -149,8 +149,18 @@ const next = projects[(i + 1) % projects.length];
 
   <section class="border-t border-navy/10 bg-white">
     <div class="mx-auto max-w-6xl px-5 py-16 sm:px-8">
-      <p class="font-mono text-sm text-accent">The work</p>
-      <div class="mt-8 flex flex-col gap-12">
+      <div class="flex flex-wrap items-center justify-between gap-4">
+        <p class="font-mono text-sm text-accent">The work</p>
+        {p.databook && (
+          <div class="inline-flex rounded-full border border-navy/20 p-1" role="tablist" aria-label="The work">
+            <button type="button" role="tab" aria-selected="true" data-work-tab="dashboard"
+              class="work-tab whitespace-nowrap rounded-full px-3 py-1.5 font-mono text-xs sm:px-4 sm:text-sm">Dashboard · {p.shots.length} pages</button>
+            <button type="button" role="tab" aria-selected="false" data-work-tab="databook"
+              class="work-tab whitespace-nowrap rounded-full px-3 py-1.5 font-mono text-xs sm:px-4 sm:text-sm">Databook · 23 tabs</button>
+          </div>
+        )}
+      </div>
+      <div class="mt-8 flex flex-col gap-12" data-work-panel="dashboard">
         {p.shots.map((s) => (
           <figure>
             <a href={s.src} target="_blank" rel="noopener">
@@ -160,6 +170,18 @@ const next = projects[(i + 1) % projects.length];
           </figure>
         ))}
       </div>
+      {p.databook && (
+        <div class="mt-8 flex flex-col gap-12" data-work-panel="databook" hidden>
+          {p.databook.map((s) => (
+            <figure>
+              <a href={s.src} target="_blank" rel="noopener">
+                <img src={s.src} alt={s.caption} loading="lazy" class="mx-auto w-full max-w-4xl rounded border border-navy/10 shadow-sm" />
+              </a>
+              <figcaption class="mx-auto mt-3 max-w-4xl text-sm text-mute">{s.caption}</figcaption>
+            </figure>
+          ))}
+        </div>
+      )}
       {p.note && <p class="mt-12 text-sm italic text-mute">{p.note}</p>}
     </div>
   </section>
@@ -202,3 +224,21 @@ const next = projects[(i + 1) % projects.length];
     </a>
   </section>
 </Base>
+
+<style>
+  .work-tab { color: var(--color-navy); }
+  .work-tab[aria-selected='true'] { background: var(--color-navy); color: #fff; }
+  .work-tab:not([aria-selected='true']):hover { background: var(--color-tint); }
+</style>
+
+<script>
+  const tabs = document.querySelectorAll<HTMLButtonElement>('[data-work-tab]');
+  tabs.forEach((tab) =>
+    tab.addEventListener('click', () => {
+      tabs.forEach((t) => t.setAttribute('aria-selected', String(t === tab)));
+      document.querySelectorAll<HTMLElement>('[data-work-panel]').forEach((panel) => {
+        panel.hidden = panel.dataset.workPanel !== tab.dataset.workTab;
+      });
+    }),
+  );
+</script>

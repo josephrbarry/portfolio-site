@@ -16,6 +16,7 @@ export interface Project {
   tools: string[];
   cover: string;
   shots: Shot[];
+  databook?: Shot[];
   download?: { href: string; label: string };
   github?: string;
   note?: string;
@@ -91,6 +92,17 @@ export const projects: Project[] = [
       { src: '/projects/paramount/page7.png', caption: 'Sell the networks? Keep vs. sell by date, break-even price' },
       { src: '/projects/paramount/page8.png', caption: 'After closing: pre-closing estimates vs the closing filings' },
       { src: '/projects/paramount/page9.png', caption: 'Project overview: how it was built and how close the estimates came' },
+    ],
+    databook: [
+      { src: '/projects/paramount/databook/databook_cover.png', caption: 'Cover: contents and tab groups' },
+      { src: '/projects/paramount/databook/databook_summary.png', caption: 'Executive summary: headline metrics, findings and red flags, closing update' },
+      { src: '/projects/paramount/databook/databook_qoe.png', caption: 'Quality of earnings: management vs. diligence EBITDA, LTM Jun-26' },
+      { src: '/projects/paramount/databook/databook_deal_math.png', caption: 'Deal math: offer price, ticking fee, equity value to enterprise value' },
+      { src: '/projects/paramount/databook/databook_ppa.png', caption: 'Purchase price allocation: assets, liabilities and goodwill vs. WBD’s 2022 deal' },
+      { src: '/projects/paramount/databook/databook_leverage.png', caption: 'Leverage: sources and uses, pro forma net debt at face value, covenant test' },
+      { src: '/projects/paramount/databook/databook_networks.png', caption: 'Sell the networks? Keep value vs. sale value by date, break-even' },
+      { src: '/projects/paramount/databook/databook_post_close.png', caption: 'Post_Close: pre-closing estimates trued up to the closing filings (top of tab)' },
+      { src: '/projects/paramount/databook/databook_checks.png', caption: 'Checks: 61 automated checks, all passing' },
     ],
     note: 'Public SEC filings through 6 August 2026; closing filings through 13 October 2026. Synergies are Paramount’s stated $6bn target, a forecast that can’t be verified from public filings.',
   },
