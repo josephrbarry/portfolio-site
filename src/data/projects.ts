@@ -78,7 +78,6 @@ export const projects: Project[] = [
       'Excel databook: 23 tabs, 1,484 formulas, 61 checks, all passing. Deal math, quality of earnings, net debt, purchase price allocation, leverage and the networks analysis, every number tagged to its filing.',
       'Nine-page Power BI story, executive summary first, ending with a review of how close the estimates came.',
       'After the deal closed on 6-Oct-26, a second Alteryx workflow (193 checks, all passing) trued the model up to the closing filings and fed four post-closing databook tabs: net debt came within 2% of the model, and all three red flags still stand.',
-      'One-page advisor memo to Paramount’s board; a build script checks every number in it against the databook.',
     ],
     tools: ['Alteryx', 'Excel', 'Power BI', 'Python', 'SEC EDGAR'],
     cover: '/projects/paramount/page1.png',
@@ -93,7 +92,6 @@ export const projects: Project[] = [
       { src: '/projects/paramount/page8.png', caption: 'After closing: pre-closing estimates vs the closing filings' },
       { src: '/projects/paramount/page9.png', caption: 'Project overview: how it was built and how close the estimates came' },
     ],
-    download: { href: '/projects/paramount/Paramount_WBD_Advisor_Memo.pdf', label: 'Read the one-page advisor memo (PDF)' },
     note: 'Public SEC filings through 6 August 2026; closing filings through 13 October 2026. Synergies are Paramount’s stated $6bn target, a forecast that can’t be verified from public filings.',
   },
   {
