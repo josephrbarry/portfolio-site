@@ -12,7 +12,9 @@ export interface Project {
   verdict: string;
   stats: { value: string; label: string }[];
   findings: { head: string; body: string }[];
-  built: string[];
+  built?: string[];
+  steps?: { title: string; detail: string }[];
+  trueup?: TrueUp;
   tools: string[];
   cover: string;
   shots: Shot[];
@@ -22,6 +24,14 @@ export interface Project {
   note?: string;
   discrepancies?: Discrepancies;
   sources?: { group: string; items: { cite: string; use: string; links?: { label: string; href: string }[] }[] }[];
+}
+
+export interface TrueUp {
+  headline: string;
+  sub: string;
+  unit: string;
+  rows: { metric: string; estimate: string; actual: string; variance: string; pct: string; flag?: boolean }[];
+  note: string;
 }
 
 export interface Discrepancies {
@@ -74,11 +84,25 @@ export const projects: Project[] = [
         body: 'Below that, keeping them for cash flow is worth more, and a sale at market multiples would raise leverage, not reduce it.',
       },
     ],
-    built: [
-      'Alteryx workflow extracts 436 line items from both companies’ SEC filings and reconciles them in 60 checks.',
-      'Excel databook: 23 tabs, 1,483 formulas, 61 checks, all passing. Deal math, quality of earnings, net debt, purchase price allocation, leverage and the networks analysis, every number tagged to its filing.',
-      'Nine-page Power BI story, executive summary first, ending with a review of how close the estimates came.',
-      'After the deal closed on 6-Oct-26, a second Alteryx workflow (195 checks, all passing) trued the model up to the closing filings and fed four post-closing databook tabs: net debt came within about 4% of the model, and all three red flags still stand.',
+    trueup: {
+      headline: 'I estimated the deal before it closed. The closing filings confirmed 9 of my 10 key figures within 5%.',
+      sub: 'Model built from SEC filings to 6-Aug-26 · trued up to the closing 8-Ks of 6-Oct-26 · 195 automated checks, all passing',
+      unit: '$ billions unless stated',
+      rows: [
+        { metric: 'Purchase price', estimate: '97.3', actual: '97.2', variance: '(0.1)', pct: '(0.1%)' },
+        { metric: 'Enterprise value', estimate: '113.9', actual: '112.2', variance: '(1.7)', pct: '(1.5%)' },
+        { metric: 'Price per WBD share ($)', estimate: '31.68', actual: '31.02', variance: '(0.66)', pct: '(2.1%)' },
+        { metric: 'Goodwill', estimate: '58.1', actual: '55.3', variance: '(2.8)', pct: '(4.9%)' },
+        { metric: 'Net leverage', estimate: '6.4x', actual: '6.2x', variance: '(0.2x)', pct: '(3.6%)' },
+        { metric: 'New acquisition debt', estimate: '52.0', actual: '56.9', variance: '4.9', pct: '9.5%', flag: true },
+      ],
+      note: 'New debt: Paramount raised $4.9bn more debt than my model’s funding need and kept the extra as cash. All three red flags still stand on closing terms.',
+    },
+    steps: [
+      { title: 'Alteryx', detail: '436 line items extracted from both companies’ SEC filings and reconciled in 60 checks.' },
+      { title: 'Excel databook', detail: '23 tabs, 1,483 formulas, 61 checks, all passing: deal math, quality of earnings, net debt, purchase price allocation, leverage and the networks analysis, every number tagged to its filing.' },
+      { title: 'Power BI', detail: 'Nine-page story, executive summary first.' },
+      { title: 'True-up at closing', detail: 'After the deal closed on 6-Oct-26, a second Alteryx workflow (195 checks, all passing) trued the model up to the closing filings and fed four post-closing databook tabs. Results above.' },
     ],
     tools: ['Alteryx', 'Excel', 'Power BI', 'Python', 'SEC EDGAR'],
     cover: '/projects/paramount/page1.png',
