@@ -47,7 +47,7 @@ export const projects: Project[] = [
     verdict: 'What is Paramount buying, what is it paying, and do the synergies close the gap? I did the buy-side diligence to find out, and built my own analysis from the filings.',
     stats: [
       { value: '$113.9bn', label: 'Enterprise value at assumed closing' },
-      { value: '6.3x', label: 'Net leverage before synergies (5.5x covenant)' },
+      { value: '6.4x', label: 'Net leverage before synergies (5.5x covenant)' },
       { value: '60%', label: 'Share of the price that is goodwill' },
       { value: '113%', label: 'Premium and fees vs. capitalized synergies' },
     ],
@@ -58,7 +58,7 @@ export const projects: Project[] = [
       },
       {
         head: 'Leverage depends on synergies that don’t exist yet.',
-        body: 'Pro forma net leverage is 6.3x before synergies against a 5.5x covenant. It reaches Paramount’s 4.3x only because the credit agreement counts the full synergy target in advance.',
+        body: 'Pro forma net leverage is 6.4x before synergies against a 5.5x covenant, with all debt at face value. It gets near Paramount’s 4.3x (4.4x) only because the credit agreement counts the full synergy target in advance.',
       },
       {
         head: 'WBD’s earnings are softer than reported.',
@@ -75,9 +75,9 @@ export const projects: Project[] = [
     ],
     built: [
       'Alteryx workflow extracts 436 line items from both companies’ SEC filings and reconciles them in 60 checks.',
-      'Excel databook: 23 tabs, 1,484 formulas, 61 checks, all passing. Deal math, quality of earnings, net debt, purchase price allocation, leverage and the networks analysis, every number tagged to its filing.',
+      'Excel databook: 23 tabs, 1,483 formulas, 61 checks, all passing. Deal math, quality of earnings, net debt, purchase price allocation, leverage and the networks analysis, every number tagged to its filing.',
       'Nine-page Power BI story, executive summary first, ending with a review of how close the estimates came.',
-      'After the deal closed on 6-Oct-26, a second Alteryx workflow (193 checks, all passing) trued the model up to the closing filings and fed four post-closing databook tabs: net debt came within 2% of the model, and all three red flags still stand.',
+      'After the deal closed on 6-Oct-26, a second Alteryx workflow (195 checks, all passing) trued the model up to the closing filings and fed four post-closing databook tabs: net debt came within about 4% of the model, and all three red flags still stand.',
     ],
     tools: ['Alteryx', 'Excel', 'Power BI', 'Python', 'SEC EDGAR'],
     cover: '/projects/paramount/page1.png',
