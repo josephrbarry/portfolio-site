@@ -107,6 +107,7 @@ const next = projects[(i + 1) % projects.length];
     <div class="lg:col-span-2">
       <p class="font-mono text-sm text-accent">How it was built</p>
       {p.steps ? (
+        <>
         <ol class="mt-5 flex flex-col gap-4">
           {p.steps.map((s, n) => (
             <li class={`border-l-2 pl-4 text-sm leading-relaxed ${n === p.steps!.length - 1 ? 'border-navy' : 'border-tint'}`}>
@@ -115,6 +116,8 @@ const next = projects[(i + 1) % projects.length];
             </li>
           ))}
         </ol>
+        {p.stepsNote && <p class="mt-5 text-sm font-semibold text-navy">{p.stepsNote}</p>}
+        </>
       ) : (
         <ul class="mt-5 flex flex-col gap-4">
           {p.built?.map((b) => (

@@ -14,6 +14,7 @@ export interface Project {
   findings: { head: string; body: string }[];
   built?: string[];
   steps?: { title: string; detail: string }[];
+  stepsNote?: string;
   trueup?: TrueUp;
   tools: string[];
   cover: string;
@@ -55,7 +56,7 @@ export const projects: Project[] = [
     card: 'Paramount is paying $31.00 a share, 147% above WBD’s unaffected price. I assessed the deal from the buyer’s side: price, earnings quality, leverage, goodwill and the cable networks.',
     question:
       'Paramount Skydance agreed to buy all of Warner Bros. Discovery for $31.00 a share in cash, about $110 billion including debt, after a bidding contest with Netflix. Was it worth it, and what should the board do now?',
-    verdict: 'What is Paramount buying, what is it paying, and do the synergies close the gap? I did the buy-side diligence to find out, and built my own analysis from the filings.',
+    verdict: 'Below is my complete report: every key estimate from my model, built from SEC filings before the deal closed, set against Paramount’s closing filings.',
     stats: [
       { value: '$113.9bn', label: 'Enterprise value at assumed closing' },
       { value: '6.4x', label: 'Net leverage before synergies (5.5x covenant)' },
@@ -65,11 +66,11 @@ export const projects: Project[] = [
     findings: [
       {
         head: 'Paramount overpaid.',
-        body: 'The premium, ticking fee and $2.8bn Netflix termination fee total $50.9bn, 113% of what the $6bn synergy target is worth. Breaking even needs $6.8bn of synergies a year.',
+        body: 'The premium, ticking fee and $2.8bn Netflix termination fee total $50.9bn, 113% of the $45bn the $6bn synergy target is worth at Paramount’s own 7.5x multiple. Breaking even needs $6.8bn of synergies a year. On closing terms it’s still 109%.',
       },
       {
         head: 'Leverage depends on synergies that don’t exist yet.',
-        body: 'Pro forma net leverage is 6.4x before synergies against a 5.5x covenant, with all debt at face value. It gets near Paramount’s 4.3x (4.4x) only because the credit agreement counts the full synergy target in advance.',
+        body: 'Pro forma net leverage is 6.4x before synergies against a 5.5x covenant, with all debt at face value. Only the full synergy case passes (4.4x; Paramount states 4.3x), because the credit agreement counts projected synergies before they’re achieved. At closing it’s 6.2x before synergies.',
       },
       {
         head: 'WBD’s earnings are softer than reported.',
@@ -77,11 +78,11 @@ export const projects: Project[] = [
       },
       {
         head: 'Goodwill carries the risk.',
-        body: 'An estimated purchase price allocation puts $58.1bn, 60% of the price, in goodwill: twice WBD’s own 2022 deal on a like-for-like basis.',
+        body: 'An estimated purchase price allocation puts $58.1bn, 60% of the price, in goodwill. On a like-for-like basis that’s 53% vs. 26% in WBD’s own 2022 deal, twice the level, after WBD already wrote off $9.1bn in 2024. Paramount’s closing allocation still puts 57% in goodwill.',
       },
       {
-        head: 'Sell the cable networks only above $17.3bn.',
-        body: 'Below that, keeping them for cash flow is worth more, and a sale at market multiples would raise leverage, not reduce it.',
+        head: 'Keep the cable networks unless a buyer pays above $17.3bn.',
+        body: 'That’s the break-even for a sale on 1-Jan-28, Paramount’s first realistic date (5.6x 2028E EBITDA). Below it, keeping them for cash flow is worth more, and a sale at market multiples would raise leverage, not reduce it.',
       },
     ],
     trueup: {
@@ -99,11 +100,13 @@ export const projects: Project[] = [
       note: 'New debt: Paramount raised $4.9bn more debt than my model’s funding need and kept the extra as cash. All three red flags still stand on closing terms.',
     },
     steps: [
-      { title: 'Alteryx', detail: '436 line items extracted from both companies’ SEC filings and reconciled in 60 checks.' },
+      { title: 'Python + SEC EDGAR', detail: 'Pulled 22 SEC filings (15 before closing, 7 at closing) and their XBRL data.' },
+      { title: 'Alteryx', detail: 'Standardized 436 line items for both companies and reconciled them in 60 checks.' },
       { title: 'Excel databook', detail: '23 tabs, 1,483 formulas, 61 checks, all passing: deal math, quality of earnings, net debt, purchase price allocation, leverage and the networks analysis, every number tagged to its filing.' },
       { title: 'Power BI', detail: 'Nine-page story, executive summary first.' },
-      { title: 'True-up at closing', detail: 'After the deal closed on 6-Oct-26, a second Alteryx workflow (195 checks, all passing) trued the model up to the closing filings and fed four post-closing databook tabs. Results above.' },
+      { title: 'True-up at closing', detail: 'After the deal closed on 6-Oct-26, a second Alteryx workflow (195 checks, all passing) trued the model up to the closing filings and fed the Post_Close tab and four post-closing databook tabs. Results above.' },
     ],
+    stepsNote: '316 of 316 checks pass across Alteryx and the databook.',
     tools: ['Alteryx', 'Excel', 'Power BI', 'Python', 'SEC EDGAR'],
     cover: '/projects/paramount/page1.png',
     shots: [
