@@ -150,7 +150,7 @@ export const projects: Project[] = [
     findings: [
       {
         head: 'The published record doesn’t foot, and the Treasury was right.',
-        body: 'The 1792 subscription table as published states a total its rows don’t add up to. Comparing four printings traced three cell errors to an 1832 reprint that later sources copied. Correct them and every column foots to the Treasury’s printed total to the penny.',
+        body: 'The version of the 1792 subscription table most people read today states a total its rows don’t add up to. Of four printings, only the original 1792 pamphlet is correct; the 1832 official reprint and Founders Online carry three cell errors, likely from the handwritten copy sent to Congress. Corrected, every column foots to the Treasury’s printed total to the penny.',
       },
       {
         head: 'The quotas were set on a balance sheet that was one-third estimate and one-third blank.',
@@ -176,10 +176,10 @@ export const projects: Project[] = [
     shots: [
       { src: '/projects/hamilton/A-summary.png', caption: 'Schedule A · Summary and opinion' },
       { src: '/projects/hamilton/B-tieout.png', caption: 'Schedule B · Tie-out of every source document' },
-      { src: '/projects/hamilton/E-taccount.png', caption: 'Schedule E · The 1793 settlement as a T-account' },
-      { src: '/projects/hamilton/F-fairness.png', caption: 'Schedule F · The fairness test' },
       { src: '/projects/hamilton/C-ledger.png', caption: 'Schedule C · Ledger' },
       { src: '/projects/hamilton/D-takeup.png', caption: 'Schedule D · Take-up' },
+      { src: '/projects/hamilton/E-taccount.png', caption: 'Schedule E · The 1793 settlement as a T-account' },
+      { src: '/projects/hamilton/F-fairness.png', caption: 'Schedule F · The fairness test' },
       { src: '/projects/hamilton/G-apportionment.png', caption: 'Schedule G · Apportionment' },
       { src: '/projects/hamilton/H-statistics.png', caption: 'Schedule H · Statistics and sources' },
     ],
@@ -205,16 +205,16 @@ export const projects: Project[] = [
         caption:
           'To find where the errors came from, I compared four printings of the same table, cell by cell.',
         items: [
-          { source: 'Childs & Swaine pamphlet, 1792 (via 2008 TCP transcription)', finding: 'Printed the year the statement was issued. The transcription shows Massachusetts as 4,177,013.81 ($300,000 low), South Carolina’s over-subscription as 634,573.52 ($5 low), and the unsubscribed total $2 off. Pending original page transcription.' },
-          { source: 'Seybert, Statistical Annals, 1818', finding: 'The most accurate printing. Its only slip is $60 in the Virginia line.' },
-          { source: 'American State Papers: Finance, 1832', finding: 'Where the $500,000, $30,000 and $30 errors first appear.' },
-          { source: 'Founders Online (National Archives)', finding: 'Copied the 1832 reprint, errors included. It’s the version most people will find online today.' },
+          { source: 'Childs & Swaine pamphlet, 1792', finding: 'Printed the year the statement was issued. Every figure is correct, checked against the original page (Evans 24926, p. 15).' },
+          { source: 'Seybert, Statistical Annals, 1818', finding: 'Nearly correct: Virginia $60 low, Connecticut marked (d) for (a), and “received” for “revived” in a note.' },
+          { source: 'American State Papers: Finance, 1832', finding: 'North Carolina $500,000 low, Massachusetts $30,000 low, Maryland $30 low, and the subscribed column headed “Amount unsubscribed.”' },
+          { source: 'Founders Online (National Archives)', finding: 'Reproduces the 1966 Papers of Alexander Hamilton, transcribed from a manuscript: same three errors, header corrected. The version most people read today.' },
         ],
       },
       items: [
         {
           head: 'The Treasury was right.',
-          body: 'With those three cells corrected, all five columns foot to the totals the Treasury printed in 1792, to the penny. The arithmetic was sound; the reprints are what’s wrong. I found no published source that notes the errors.',
+          body: 'With those three cells corrected, all five columns foot to the totals the Treasury printed in 1792, to the penny. The arithmetic was sound, and the 1792 pamphlet printed it correctly. I found no published source that notes the errors.',
         },
         {
           head: 'I got it wrong first.',
@@ -266,20 +266,20 @@ export const projects: Project[] = [
         items: [
           {
             cite: 'U.S. Treasury Department, Report of the Secretary of the Treasury, on the Subject of the Public Debt. Presented to the House of Representatives, February 7th, 1792. Philadelphia: Childs and Swaine, 1792, p. 15 (Evans Early American Imprints, N19158).',
-            use: 'Witness 1.',
-            links: [{ label: 'Transcription (Text Creation Partnership)', href: 'https://github.com/textcreationpartnership/N19158' }],
+            use: 'Witness 1. The only fully correct printing.',
           },
           {
             cite: 'Adam Seybert, Statistical Annals of the United States of America, Philadelphia, 1818, p. 726.',
-            use: 'Witness 2. The most accurate of the four.',
+            use: 'Witness 2. Nearly correct ($60 Virginia slip).',
           },
           {
-            cite: 'American State Papers: Finance, vol. 1, Gales & Seaton, Washington, 1832.',
-            use: 'Witness 3. Where the three errors first appear.',
+            cite: 'American State Papers: Finance, vol. 1, Gales & Seaton, Washington, 1832, pp. 150–151.',
+            use: 'Witness 3. Three cell errors.',
+            links: [{ label: 'Scan (Internet Archive)', href: 'https://archive.org/details/americanstatepap01inunit' }],
           },
           {
             cite: 'Founders Online, National Archives, transcription of Enclosure D.',
-            use: 'Witness 4. Carries the 1832 errors.',
+            use: 'Witness 4. Follows Syrett’s 1966 edition, from a manuscript; same three errors.',
             links: [{ label: 'Founders Online', href: 'https://founders.archives.gov/documents/Hamilton/01-10-02-0124-0005' }],
           },
         ],
